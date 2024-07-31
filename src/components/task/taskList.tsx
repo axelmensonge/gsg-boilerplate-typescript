@@ -1,40 +1,10 @@
 import React, { useEffect } from 'react'
-import { gql, useQuery, useSubscription } from '@apollo/client'
-
+import { useQuery, useSubscription } from '@apollo/client'
 import TaskElement from './taskElement'
-import { Task } from '../customTypes'
-
-const GET_TASKS = gql`
-  query GetTasks($order: String, $where: SequelizeJSON) {
-    task(order: $order, where: $where) {
-      id
-      name
-      active
-      color
-      date
-    }
-  }
-`
-
-const TASK_ADDED = gql`
-  subscription OnTaskAdded {
-    taskCreated {
-      id
-      name
-      active
-    }
-  }
-`
-
-const TASK_DELETED = gql`
-  subscription OnTaskDeleted {
-    taskDeleted {
-      id
-      name
-      active
-    }
-  }
-`
+import { Task } from '../../customTypes'
+import { GET_TASKS } from '../../graphql/Queries/getTasks'
+import { TASK_ADDED } from '../../graphql/Subscriptions/onTaskAdded'
+import { TASK_DELETED } from '../../graphql/Subscriptions/onTaskDeleted'
 
 export default function TaskList({ status }: { status: string }) {
   function isActive(status: string) {

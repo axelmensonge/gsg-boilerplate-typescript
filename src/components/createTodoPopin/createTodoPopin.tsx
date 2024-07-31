@@ -2,18 +2,9 @@ import React, { useState } from 'react'
 import './createTodoPopin.css'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
-import { gql, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { HexColorPicker } from 'react-colorful'
-
-const ADD_TASK = gql`
-  mutation AddTask($task: taskInput!) {
-    taskCreate(task: $task) {
-      id
-      name
-      date
-    }
-  }
-`
+import { ADD_TASK } from '../../graphql/Mutations/addTask'
 
 export default function CreateTodoPopin({ onClose }: { onClose: () => void }) {
   const [name, setName] = useState('')

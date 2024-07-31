@@ -1,9 +1,11 @@
 import React, { ChangeEvent, MouseEvent } from 'react'
-import { gql, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { useDebouncedCallback } from 'use-debounce'
+import { UPDATE_TASK } from '../../graphql/Mutations/updateTask'
+import { DELETE_TASK } from '../../graphql/Mutations/deleteTask'
 
 import './taskElement.css'
-import { Task } from '../customTypes'
+import { Task } from '../../customTypes'
 
 export default function TaskElement({
   task,
@@ -12,23 +14,6 @@ export default function TaskElement({
   task: Task
   reloadList: () => void
 }) {
-  const UPDATE_TASK = gql`
-    mutation UpdateTask($task: taskInput!) {
-      taskUpdate(task: $task) {
-        id
-        name
-        active
-        date
-        color
-      }
-    }
-  `
-  const DELETE_TASK = gql`
-    mutation DeleteTask($id: Int!) {
-      taskDelete(id: $id)
-    }
-  `
-
   const { id, name, active, date, color } = task
 
   const [taskUpdate] = useMutation(UPDATE_TASK)
