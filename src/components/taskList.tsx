@@ -11,6 +11,7 @@ const GET_TASKS = gql`
       name
       active
       color
+      date
     }
   }
 `
@@ -44,7 +45,7 @@ export default function TaskList({ status }: { status: string }) {
 
   const { loading, error, data, refetch } = useQuery(GET_TASKS, {
     variables: {
-      order: 'reverse:createdAt',
+      order: 'date',
       where: {
         active: isActive(status)
       }
