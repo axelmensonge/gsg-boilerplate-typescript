@@ -18,7 +18,7 @@ export default function CreateTodoPopin({ onClose }: { onClose: () => void }) {
         variables: {
           task: {
             name,
-            date: date.toISOString(),
+            date: date,
             active: true,
             color
           }
