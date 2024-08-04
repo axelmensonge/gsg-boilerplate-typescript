@@ -40,8 +40,8 @@
     "dev": "pm2 delete all -s; DEBUG=* pm2 startOrReload ecosystem.config.js && pm2 start react-scripts --name web -- start",
     "dev2": "pm2 delete all && pm2 startOrReload ecosystem.config.js && pm2 start react-scripts --name web -- start",
     "pm2-del": "pm2 delete all",
-    "pm2-back": "pm2 startOrReload ecosystem.config.js",
-    "pm2-front": "pm2 start react-scripts --name web -- start",
+    "pm2-1": "pm2 startOrReload ecosystem.config.js",
+    "pm2-2": "pm2 start react-scripts --name web -- start",
     "db-reset": "rm -f data/database.sqlite && ./node_modules/.bin/sequelize db:migrate --config config/config.json && ./node_modules/.bin/sequelize db:seed:all --config config/config.json",
     "db-migrate": "./node_modules/.bin/sequelize db:migrate --config config/config.json"
   },
